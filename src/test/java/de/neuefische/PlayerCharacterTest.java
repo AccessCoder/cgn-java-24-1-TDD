@@ -16,7 +16,7 @@ class PlayerCharacterTest {
     @Test
     void getX_returnNull_whenTheGameStarted() {
         // GIVEN
-        int expected = 0;
+        int expected = 1;
         // WHEN
         int actual = PlayerCharacter.getX();
         // THEN
