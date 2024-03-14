@@ -2,6 +2,8 @@ package de.neuefische;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,6 +24,36 @@ class FizzBuzzTest {
      * Am Ende des ganzen Entwicklungsprozesses haben wir dann eine rundum
      * abgetestete Anwendung.
      */
+
+    @ParameterizedTest
+    @CsvSource(
+            value = {
+                    "4, 4",
+                    "3, FIZZ",
+                    "6, FIZZ",
+                    "5, BUZZ",
+                    "15, FIZZBUZZ",
+                    "-3, FIZZ"
+            }
+    )
+    void playTest(int num, String expected){
+        String actual = FizzBuzz.play(num);
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @ParameterizedTest
+    @CsvSource(
+            delimiter = '=',
+            value = {
+                    "4=true",
+                    "5=false",
+                    "6=true"
+            }
+    )
+    void isEvenTest(int num, boolean expected){
+        boolean actual = FizzBuzz.isEven(num);
+        Assertions.assertEquals(expected, actual);
+    }
 
     @Test
     void play_shouldReturnGivenIntAsString_WhenGiven4(){
